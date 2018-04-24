@@ -16,7 +16,18 @@ class App extends React.Component {
   // TODO: componentWillMount()
   // TODO: componentDidMount()
   // TODO: componentWillUnmount()
-
+  componentWillMount() {
+    this.fetchTweets()
+  }
+  
+  componentDidMount() {
+    this.startInterval();
+  }
+  
+  componentWillUnmount() {
+    this.cleanUpInterval()
+  }
+  
   startInterval = () => {
     this.interval = setInterval(this.fetchTweets, 2000);
   }
@@ -24,6 +35,7 @@ class App extends React.Component {
   cleanUpInterval = () => clearInterval(this.interval);
 
   fetchTweets = () => {
+    // debugger
     const newTweets = getTweets();
     this.setState({
       latestTweets: newTweets
