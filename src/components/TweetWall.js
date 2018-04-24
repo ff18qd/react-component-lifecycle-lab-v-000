@@ -31,14 +31,16 @@ class TweetWall extends React.Component {
   }
   
   shouldComponentUpdate(nextProps, nextState) {
-    // debugger
-    if (!!this.nextProps.newTweets) {
-      return true
-    } else {
+    if (nextProps.newTweets.length === 0) {
       return false
+    } else {
+      return true
     }
-      
-    // return this.state.tweets !== nextState.tweets;
+    // if (this.state.tweets !== nextState.tweets) {
+    //   return true
+    // } else {
+    //   return false
+    // }
   }
 
   render() {
